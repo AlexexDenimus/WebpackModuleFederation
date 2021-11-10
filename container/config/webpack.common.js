@@ -2,6 +2,11 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   module: {
+    plugins: [
+      new HTMLWebpackPlugin({
+        template: "./public/index.html",
+      }),
+    ],
     rules: [
       {
         test: /\.m?js$/,
@@ -16,9 +21,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
 };

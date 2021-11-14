@@ -23,7 +23,7 @@ export default () => {
     if (isSignedIn) {
       history.push("/dashboard");
     }
-  }, isSignedIn);
+  }, [isSignedIn]);
 
   return (
     <Router history={history}>
@@ -39,7 +39,8 @@ export default () => {
                 <AuthLazy onSignIn={() => setSignedIn(true)} />
               </Route>
               <Route path="/dashboard">
-                {!isSignedIn ? <Redirect to="/" /> : <DashboardLazy />}
+                {!isSignedIn && <Redirect to="/" />}
+                <DashboardLazy />
               </Route>
               <Route path="/" component={MarketingLazy} />
             </Switch>
